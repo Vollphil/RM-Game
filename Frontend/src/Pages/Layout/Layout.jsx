@@ -1,15 +1,17 @@
 import { Outlet, Link } from "react-router-dom";
+import "./Layout.css";
 
 
 
 const Layout = () =>{
     return(
         <div>
-            <nav>
-                <h1 className="grow"><Link to="/">Home</Link></h1>
-                <h1 className="grow"><Link> Score Board </Link></h1>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <h1 className="navbar-brand"><Link to="/">Home</Link></h1>
+                <h1 className="navbar-brand"><Link> Score Board </Link></h1>
+
             </nav>
-            <div className="GameField">
+            <div className="gameField">
             <Outlet />
             </div>
         </div>
