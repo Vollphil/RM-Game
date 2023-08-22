@@ -11,9 +11,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Price {
+public class RecommendationNumber {
+
     @Id
     @GeneratedValue
     private Long id;
-    private int price;
+    private int recommendationNumber;
+
 }
