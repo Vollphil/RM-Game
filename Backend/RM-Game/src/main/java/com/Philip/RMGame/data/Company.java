@@ -18,7 +18,7 @@ public class Company {
     @GeneratedValue
     private Long id;
 
-    private CompanyName companyName;
+    private String companyName;
 
 
 

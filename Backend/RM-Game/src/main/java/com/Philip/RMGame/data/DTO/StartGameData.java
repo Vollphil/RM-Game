@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StartGameData {
     private int rounds;
-    private Company company;
+    private String company;
 }

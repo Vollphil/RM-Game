@@ -21,8 +21,8 @@ private int rounds;
 private int currentRound;
 private int cash;
 
-@OneToOne
-private Company company;
+
+private String companyName;
 
 
 }

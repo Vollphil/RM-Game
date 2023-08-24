@@ -14,10 +14,12 @@ public class GameService {
         this.gameRepository = gameRepository;
     }
 
-    public Game startNewGame(int rounds, Company company){
+
+
+    public Game startNewGame(int rounds, String companyName){
         Game game = new Game();
             game.setRounds(rounds);
-            game.setCompany(company);
+            game.setCompanyName(companyName);
             //setcurrentRound must be changend
 
         gameRepository.save(game);
