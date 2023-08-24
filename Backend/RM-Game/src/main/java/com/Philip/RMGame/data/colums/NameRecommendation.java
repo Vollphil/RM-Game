@@ -1,5 +1,6 @@
-package com.Philip.RMGame.data;
+package com.Philip.RMGame.data.colums;
 
+import com.Philip.RMGame.data.enums.RecommendationDetail;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -11,9 +12,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class HPR {
+public class NameRecommendation {
     @Id
     @GeneratedValue
-    private Long id;
-    private boolean isHpr;
+private Long id;
+private RecommendationDetail recommendationDetail;
 }

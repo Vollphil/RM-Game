@@ -1,12 +1,9 @@
 package com.Philip.RMGame.data.table;
 
-import com.Philip.RMGame.data.*;
-import com.Philip.RMGame.data.enums.CompanyName;
-import com.Philip.RMGame.data.enums.RecommendationDetail;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.Philip.RMGame.data.colums.*;
+import com.Philip.RMGame.data.enums.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -22,21 +19,25 @@ public class ComputerCompany {
     @GeneratedValue
     private Long id;
     private CompanyName companyName;
-    @OneToMany
+
+    @JsonManagedReference
+    @OneToMany( cascade = CascadeType.ALL)
     private List<RecommendationNumber> recommendationNumber;
-    @OneToMany
+
+    @JsonManagedReference
+    @OneToMany( cascade = CascadeType.ALL)
     private List<HPR> hpr;
     private List<RecommendationDetail> recommendationDetails;
-    @OneToMany
+
     private List<DamagePotential> damagePotential;
-    @OneToMany
+
     private List<Price> prices;
-    @OneToMany
+
     private List<ImplementationTime> implementationTime;
-    @OneToMany
-    private List<AnnualBonus> annualBonuses;
-    @OneToMany
-    private List<HPRBonus> hprBonuses;
+
+    private AnnualBonus annualBonus;
+
+    private HPRBonus hprBonus;
 
 
 }

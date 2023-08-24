@@ -1,4 +1,4 @@
-package com.Philip.RMGame.data;
+package com.Philip.RMGame.data.colums;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +11,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Price {
+public class HPR {
     @Id
     @GeneratedValue
     private Long id;
-    private int price;
+    private boolean isHpr;
 }

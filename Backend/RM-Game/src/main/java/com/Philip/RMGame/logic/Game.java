@@ -1,6 +1,6 @@
 package com.Philip.RMGame.logic;
 
-import com.Philip.RMGame.data.Company;
+import com.Philip.RMGame.data.table.ComputerCompany;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,15 +14,16 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 public class Game {
-@Id
+    @Id
     @GeneratedValue
     private Long id;
-private int rounds;
-private int currentRound;
-private int cash;
+    private int rounds;
+    private int currentRound;
+    private int cash;
 
 
-private String companyName;
+
+    private String companyName;
 
 
 }

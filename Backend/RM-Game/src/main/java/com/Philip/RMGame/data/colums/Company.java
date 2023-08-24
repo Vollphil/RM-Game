@@ -1,9 +1,10 @@
-package com.Philip.RMGame.data;
+package com.Philip.RMGame.data.colums;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.Philip.RMGame.data.enums.CompanyName;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 @Getter
@@ -12,12 +13,13 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
-public class AnnualBonus {
+public class Company {
     @Id
     @GeneratedValue
-
     private Long id;
-    private long bonus;
+
+    private String companyName;
+
+
 
 }
