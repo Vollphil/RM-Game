@@ -7,13 +7,13 @@ public enum AnnualBonus {
     TOOLS(50000),
     METAL(25000);
 
-    private final int value;
+    private final long value;
 
-    AnnualBonus(int value) {
+    AnnualBonus(long value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 }

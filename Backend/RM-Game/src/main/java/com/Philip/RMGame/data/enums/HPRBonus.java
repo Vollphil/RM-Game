@@ -8,13 +8,13 @@ public enum HPRBonus {
     TOOLS(20000),
     METAL(7000);
 
-    private final int value;
+    private final long value;
 
-    HPRBonus(int value) {
+    HPRBonus(long value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 }

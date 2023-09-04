@@ -21,13 +21,13 @@ public enum DamagePotential {
     EIGHTEEN(6000000),
     NINETEEN(2000000),
     TWENTY(1500000);
-    private final int value;
+    private final long value;
 
-    DamagePotential(int value) {
+    DamagePotential(long value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 }

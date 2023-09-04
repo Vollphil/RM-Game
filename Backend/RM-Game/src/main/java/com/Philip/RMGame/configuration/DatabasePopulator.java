@@ -21,53 +21,53 @@ public class DatabasePopulator {
     ApplicationRunner populator(ComputerCompanyRepository computerCompanyRepository) {
         return args -> {
             //RecommendationNumber
-            List<RecommendationNumber> recommendationNumbers = new ArrayList<>();
+            List<Integer> recommendationNumbers = new ArrayList<>();
             for (int i = 1; i < 5; i++) {
-                RecommendationNumber recommendationNumber = RecommendationNumber.builder().recommendationNumber(i).build();
-                recommendationNumbers.add(recommendationNumber);
+
+                recommendationNumbers.add(i);
             }
             //HPR
 
-            List<HPR> hprList = new ArrayList<>();
+            List<Boolean> hprList = new ArrayList<>();
             for (int i = 0; i < 2; i++) {
-                HPR hpr = HPR.builder().isHpr(true).build();
+                boolean hpr = true;
                 hprList.add(hpr);
             }
             for (int i = 0; i < 2; i++) {
-                HPR hpr = HPR.builder().isHpr(false).build();
+                boolean hpr = false;
                 hprList.add(hpr);
             }
 
             //RecommendationDetail
 
-            List<RecommendationDetail> recommendationDetailList = new ArrayList<>();
+            List<String> recommendationDetailList = new ArrayList<>();
             RecommendationDetail[] allValues = RecommendationDetail.values();
 
             //DamagePotential
-            List<DamagePotential> damagePotentialList = new ArrayList<>();
+            List<Long> damagePotentialList = new ArrayList<>();
             DamagePotential[] allDamagePotentialValues = DamagePotential.values();
 
             //Price
-            List<Price> priceList = new ArrayList<>();
+            List<Integer> priceList = new ArrayList<>();
             Price[] allPrices = Price.values();
             //ImplementationTime
-            List<ImplementationTime> implementationTimeList = new ArrayList<>();
+            List<String> implementationTimeList = new ArrayList<>();
             ImplementationTime[] wholeImplementationTime = ImplementationTime.values();
 
             for (int i = 0; i < 4; i++) {
                 //RecommendationDetail
-                RecommendationDetail detail = allValues[i];
-                recommendationDetailList.add(detail);
+
+                recommendationDetailList.add(allValues[i].getValue());
 
                 //DamagePotential
-                DamagePotential potential = allDamagePotentialValues[i];
-                damagePotentialList.add(potential);
+
+                damagePotentialList.add( allDamagePotentialValues[i].getValue());
                 //Price
-                Price price = allPrices[i];
-                priceList.add(price);
+
+                priceList.add(allPrices[i].getValue());
                 //ImplementationTime
-                ImplementationTime implementationTime = wholeImplementationTime[i];
-                implementationTimeList.add(implementationTime);
+
+                implementationTimeList.add(wholeImplementationTime[i].getValue());
 
             }
 
@@ -75,12 +75,13 @@ public class DatabasePopulator {
             ComputerCompany computerCompany = ComputerCompany.builder()
                     .companyName(CompanyName.COMPUTER)
                     .recommendationNumber(recommendationNumbers)
+                    .hpr(hprList)
                     .recommendationDetails(recommendationDetailList)
                     .damagePotential(damagePotentialList)
                     .prices(priceList)
                     .implementationTime(implementationTimeList)
-                    .annualBonus(AnnualBonus.COMPUTER)
-                    .hprBonus(HPRBonus.COMPUTER)
+                    .annualBonus(AnnualBonus.COMPUTER.getValue())
+                    .hprBonus(HPRBonus.COMPUTER.getValue())
                     .build();
             computerCompanyRepository.save(computerCompany);
         };

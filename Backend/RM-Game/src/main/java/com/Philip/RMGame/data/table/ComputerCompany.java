@@ -20,24 +20,24 @@ public class ComputerCompany {
     private Long id;
     private CompanyName companyName;
 
-    @JsonManagedReference
-    @OneToMany( cascade = CascadeType.ALL)
-    private List<RecommendationNumber> recommendationNumber;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Integer> recommendationNumber;
 
-    @JsonManagedReference
-    @OneToMany( cascade = CascadeType.ALL)
-    private List<HPR> hpr;
-    private List<RecommendationDetail> recommendationDetails;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Boolean> hpr;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> recommendationDetails;
 
-    private List<DamagePotential> damagePotential;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Long> damagePotential;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Integer> prices;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> implementationTime;
 
-    private List<Price> prices;
+    private long annualBonus;
 
-    private List<ImplementationTime> implementationTime;
-
-    private AnnualBonus annualBonus;
-
-    private HPRBonus hprBonus;
+    private Long hprBonus;
 
 
 }
