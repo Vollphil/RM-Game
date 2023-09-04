@@ -1,5 +1,6 @@
 package com.Philip.RMGame.logic;
 
+import com.Philip.RMGame.data.Player;
 import com.Philip.RMGame.data.table.ComputerCompany;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,10 +21,13 @@ public class Game {
     private int rounds;
     private int currentRound;
     private int cash;
+    @OneToOne
+
+    private Player player;
 
 
 
-    private String companyName;
+
 
 
 }

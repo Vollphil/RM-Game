@@ -15,10 +15,10 @@ public class GameService {
 
 
 
-    public Game startNewGame(int rounds, String companyName){
+    public Game startNewGame(int rounds, String playerName){
         Game game = new Game();
             game.setRounds(rounds);
-            game.setCompanyName(companyName);
+
             //setcurrentRound must be changend
 
         gameRepository.save(game);
