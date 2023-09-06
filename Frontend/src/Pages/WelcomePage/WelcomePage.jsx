@@ -1,11 +1,13 @@
+import PlayerContext from "../../PlayerContext";
 import "./WelcomePage.css"
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 
 const WelcomePage = ({setGameData,setGameStarted}) => {
     const [localGameData, setLocalGameData] = useState(null);
-    const [rounds, setRounds] = useState(0);
-    const [difficulty,setDifficulty] = useState(0);
-    const [playerName,setPlayerName] = useState("");
+    
+    const {difficulty,setDifficulty,playerName,setPlayerName,rounds,setRounds}= useContext(PlayerContext);
+    const [playerId,setPlayerId] = useState(null);
+    
 
     const startGame = async () => {
         try {
@@ -23,6 +25,8 @@ const WelcomePage = ({setGameData,setGameStarted}) => {
             const data = await response.json();
             setLocalGameData(data);
             setGameData(data);
+
+            setPlayerId(data.player.id);
         } catch (error) {
             console.error("There was a problem with the fetch operation:", error.message);
         }
