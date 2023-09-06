@@ -32,8 +32,8 @@ public class GameController {
         System.out.println("Received rounds: " + data.getRounds());
         System.out.println("Received PlayerName: " + data.getPlayerName());
         System.out.println("Received startingMoney: " + data.getStartingMoney());
-        System.out.println("Received recommendationNumber: " + data.getRecommendationNumber());
-        Game game = gameService.startNewGame(data.getRounds(),data.getPlayerName(),data.getStartingMoney(), data.getRecommendationNumber());
+
+        Game game = gameService.startNewGame(data.getRounds(),data.getPlayerName(),data.getStartingMoney());
         return ResponseEntity.ok(game);
     }
 

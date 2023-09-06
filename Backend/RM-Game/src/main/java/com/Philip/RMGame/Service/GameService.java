@@ -18,12 +18,12 @@ public class GameService {
     }
 
 
-    public Game startNewGame(int rounds, String playerName, int startingMoney, int recommendationNumber) {
+    public Game startNewGame(int rounds, String playerName, int startingMoney) {
 
         Player player = new Player();
         player.setPlayerName(playerName);
         player.setCash(startingMoney);
-        initializeRound(player, recommendationNumber);
+
         playerRepository.save(player);
 
         Game game = new Game();
