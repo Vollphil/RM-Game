@@ -21,6 +21,7 @@ public class Game {
     private int rounds;
     private int currentRound;
     private int cash;
+    private int recommendationNumber;
     @OneToOne
 
     private Player player;

@@ -22,4 +22,6 @@ public class Player {
     private long actualDamagePotential;
     private long cash;
 
+
+
 }
