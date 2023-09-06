@@ -7,7 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from './Pages/Layout/Layout';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
-import WelcomePage from './Pages/WelcomePage/WelcomePage';
+import Game from "./Pages/Game/Game";
+import SummaryTable from "./Pages/SummaryTable/SummaryTable";
+
 
 
 const router = createBrowserRouter([
@@ -18,8 +20,12 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<WelcomePage />
+        element:<Game />
 
+      },
+      {
+        path:"/summaryTable",
+        element:<SummaryTable />
       }
     ]
   }
