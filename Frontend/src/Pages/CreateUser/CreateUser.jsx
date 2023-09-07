@@ -1,11 +1,13 @@
-import {useContext, useState, useEffect} from "react";
+import {useContext, useState} from "react";
 import PlayerContext from "../../PlayerContext";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateUser = () => {
     const {username, setUsername, password, setPassword} = useContext(PlayerContext);
     const [repeatPassword, setRepeatPassword] = useState("");
     const [isPasswordMatch, setIsPasswordMatch] = useState(true);
+    const navigate = useNavigate();
 
 
     const createUser = () => {
@@ -25,6 +27,7 @@ const CreateUser = () => {
                 .then(response => {
                     if (response.status === 201) {
                         console.log("User registered successfully");
+                        navigate('/login');
                     } else if (response.status === 409) {
                         console.error("User with the same username already exists");
                     } else {
@@ -36,9 +39,11 @@ const CreateUser = () => {
             setIsPasswordMatch(false);
         }
     }
-    return (<div>
+    return (
+    <div>
+        <h1 className="text">Create User</h1>
         <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">Account Name</span>
+            <span className="input-group-text" id="basic-addon1">Username</span>
             <input
                 type="text"
                 className="form-control"

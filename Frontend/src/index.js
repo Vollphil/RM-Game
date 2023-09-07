@@ -4,38 +4,47 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Layout from './Pages/Layout/Layout';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import Game from "./Pages/Game/Game";
 import SummaryTable from "./Pages/SummaryTable/SummaryTable";
-
+import CreateUser from "./Pages/CreateUser/CreateUser";
+import LoginPage from './Pages/LoginPage/LoginPage';
 
 
 const router = createBrowserRouter([
-  {
-    path:"/",
-    element:<Layout />,
-    errorElement:<ErrorPage />,
-    children:[
-      {
-        path:"/",
-        element:<Game />
+    {
+        path: "/",
+        element: <Layout/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "/",
+                element: <Game/>
 
-      },
-      {
-        path:"/summaryTable",
-        element:<SummaryTable />
-      }
-    ]
-  }
+            },
+            {
+                path: "/summaryTable",
+                element: <SummaryTable/>
+            },
+            {
+                path:"/createUser",
+                element:<CreateUser/>
+            },
+            {
+                path:"/login",
+                element: <LoginPage/>
+            }
+        ]
+    }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-   <RouterProvider router={router} />
-  </React.StrictMode>
+    <React.StrictMode>
+        <RouterProvider router={router}/>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
