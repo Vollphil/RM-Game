@@ -6,6 +6,8 @@ import com.Philip.RMGame.data.Player;
 import com.Philip.RMGame.logic.Game;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @Service
 public class GameService {
 
@@ -18,7 +20,7 @@ public class GameService {
     }
 
 
-    public Game startNewGame(int rounds, String playerName, int startingMoney) {
+    public Game startNewGame( String playerName, int startingMoney) {
 
         Player player = new Player();
         player.setPlayerName(playerName);
@@ -28,7 +30,7 @@ public class GameService {
 
         Game game = new Game();
 
-        game.setRounds(rounds);
+        game.setRounds(4);
         game.setPlayer(player);
         game.setCurrentRound(1);
 
@@ -72,6 +74,11 @@ public class GameService {
         }
         return cash;
     }
+
+        public int randomStartingMoney() {
+            int cash = 20000 + ThreadLocalRandom.current().nextInt(0, 81) * 1000;
+            return cash;
+        }
 
     public void checkPlayerCash(Player player, int recommendationNumber) {
         if (recommendationCash(recommendationNumber) > player.getCash()) {
