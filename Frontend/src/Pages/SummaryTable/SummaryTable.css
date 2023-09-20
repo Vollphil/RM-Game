@@ -2,3 +2,13 @@
     border: 1px solid black;
     border-radius: 4px; 
 }
+.bg-success.text-white td {
+    background-color: inherit !important;
+    color: inherit !important;
+  }
+
+  .bg-danger.text-white td {
+    background-color: inherit !important;
+    color: inherit !important;
+  }
+  

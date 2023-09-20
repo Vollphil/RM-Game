@@ -5,7 +5,7 @@ import PlayerContext from "../../PlayerContext";
 
 
 const Layout = () => {
-    const [difficulty, setDifficulty] = useState(null);
+    const [playerMoney, setPlayerMoney] = useState(30000);
     const [playerName, setPlayerName] = useState("");
     const [rounds, setRounds] = useState(0);
     const [username, setUsername] = useState("");
@@ -29,12 +29,12 @@ const Layout = () => {
                     <div className="col-2">
                         <p>Your Name: {playerName}</p>
                         <p>Rounds Left: {rounds}</p>
-                        <p>Your Cash: {difficulty}</p>
+                        <p>Your Cash: {playerMoney}</p>
                     </div>
                     <div className="gameField col-8">
                         <PlayerContext.Provider
                             value={{
-                                difficulty, setDifficulty,
+                                playerMoney, setPlayerMoney,
                                 playerName, setPlayerName,
                                 rounds, setRounds,
                                 username, setUsername,
