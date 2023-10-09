@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GameRoundData {
-    private int recommendationNumber;
-    private long playerId;
+    private int cash;
+    private String playerName;
 }

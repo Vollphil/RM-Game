@@ -25,6 +25,7 @@ public class GameService {
         Player player = new Player();
         player.setPlayerName(playerName);
         player.setCash(startingMoney);
+        System.out.println(player);
 
         playerRepository.save(player);
 
@@ -42,9 +43,12 @@ public class GameService {
         return game;
     }
 
-    public Game initializeRound(Player player, int recommendationNumber) {
-        Game game = gameRepository.findByPlayer(player).orElseThrow(() -> new IllegalArgumentException("Game not found for player!"));
-        checkPlayerCash(player, recommendationNumber);
+    public Game initializeRound(String playerName, int cash) {
+        Player player = playerRepository.findByPlayerName(playerName).orElseThrow(() -> new IllegalArgumentException("Player not found!"));
+        Game game = gameRepository.findGameByPlayer(player).orElseThrow(() -> new IllegalArgumentException("Game not found!"));
+        player.setCash(cash);
+        game.setCash(cash);
+
         playerRepository.save(player);
         gameRepository.save(game);
 
@@ -52,42 +56,14 @@ public class GameService {
 
     }
 
-    public long recommendationCash(int recommendationNumber) {
-        long cash;
-        switch (recommendationNumber) {
-            case 1, 5 -> cash = 28000;
 
-            case 2 -> cash = 70000;
-            case 3, 9, 16, 18 -> cash = 10000;
-            case 4, 13 -> cash = 4000;
-            case 6, 14 -> cash = 7000;
-            case 7 -> cash = 19000;
-            case 8 -> cash = 15000;
-            case 10 -> cash = 60000;
-            case 11 -> cash = 100000;
-            case 12 -> cash = 48000;
-            case 15 -> cash = 13000;
-            case 17 -> cash = 38000;
-            case 19 -> cash = 25000;
-            case 20 -> cash = 9000;
-            default -> cash = 0;
-        }
-        return cash;
-    }
 
         public int randomStartingMoney() {
             int cash = 20000 + ThreadLocalRandom.current().nextInt(0, 81) * 1000;
             return cash;
         }
 
-    public void checkPlayerCash(Player player, int recommendationNumber) {
-        if (recommendationCash(recommendationNumber) > player.getCash()) {
-            throw new IllegalArgumentException("You don't have enough money to select this recommendation");
-        } else {
-            player.setCash(player.getCash() - recommendationCash(recommendationNumber));
-        }
 
-    }
 
 
 }

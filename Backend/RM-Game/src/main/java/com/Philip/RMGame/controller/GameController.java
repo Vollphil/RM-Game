@@ -12,6 +12,8 @@ import com.Philip.RMGame.logic.Game;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
+
 @RestController
 @RequestMapping("/game")
 @CrossOrigin()
@@ -31,31 +33,26 @@ public class GameController {
     @GetMapping("/randomStartingMoney")
     public ResponseEntity<Integer> getRandomStartingMoney() {
         int randomMoney = gameService.randomStartingMoney();
-        System.out.println(randomMoney);
         return ResponseEntity.ok(randomMoney);
     }
 
 
     @PostMapping("/start")
     public ResponseEntity<Game> startGame(@RequestBody StartGameData data) {
-        System.out.println("Received PlayerName: " + data.getPlayerName());
-
-
-        long randomStartingMoney = gameService.randomStartingMoney();
-
-        System.out.println("Generated startingMoney: " + randomStartingMoney);
-
+        int randomStartingMoney = gameService.randomStartingMoney();
         Game game = gameService.startNewGame(data.getPlayerName(), gameService.randomStartingMoney());
+        System.out.println(game.getPlayer().getPlayerName());
+
+        game.setCash(randomStartingMoney);
         return ResponseEntity.ok(game);
     }
 
 
-    @PostMapping("/playRound")
-    public ResponseEntity<Game> playRound(@RequestBody GameRoundData data) {
-        System.out.println("Received recommendationData " + data.getRecommendationNumber());
-        Player player = playerRepository.findById(data.getPlayerId()).orElseThrow(() -> new IllegalArgumentException("Player not found!"));
-        Game game = gameService.initializeRound(player, data.getRecommendationNumber());
-        return ResponseEntity.ok(game);
+    @PostMapping("/playRound/{playerName}")
+    Game playRound(@PathVariable String playerName, @RequestBody GameRoundData data) {
+        Game game = gameService.initializeRound(playerName, data.getCash());
+        System.out.println(game.getCash());
+        return game;
     }
 
     @GetMapping("/computerCompany")
