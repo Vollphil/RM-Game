@@ -5,9 +5,8 @@ import {useContext, useState} from "react";
 const WelcomePage = ({setGameData, setGameStarted}) => {
     const [localGameData, setLocalGameData] = useState(null);
 
-    const {playerMoney, setPlayerMoney, playerName, setPlayerName, rounds, setRounds} = useContext(PlayerContext);
-    const [playerId, setPlayerId] = useState(null);
-
+    const {playerMoney, setPlayerMoney, playerName, setPlayerName, rounds, setRounds,playerId,setPlayerId} = useContext(PlayerContext);
+    
 
     const fetchRandomStartingMoney = async () => {
         try {
@@ -41,14 +40,15 @@ const WelcomePage = ({setGameData, setGameStarted}) => {
             const data = await response.json();
             setLocalGameData(data);
             setGameData(data);
-
-            setPlayerId(data.player.id);
+            setRounds(4);
         } catch (error) {
             console.error("There was a problem with the fetch operation:", error.message);
         }
 
     }
-
+    const confirmGame = () => {
+        setGameStarted(true);
+    };
     
 
 
@@ -63,10 +63,7 @@ const WelcomePage = ({setGameData, setGameStarted}) => {
                         <p className="text">Chosen Name: {playerName}</p>
                         <p className="text">Starting Money:{playerMoney}</p>
                         <button
-                            onClick={() => {
-                                startGame();
-                                setGameStarted(true);
-                            }}
+                            onClick={confirmGame}
                         >
                             Confirm
                         </button>
