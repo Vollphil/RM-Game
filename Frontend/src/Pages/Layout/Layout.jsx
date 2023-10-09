@@ -5,11 +5,12 @@ import PlayerContext from "../../PlayerContext";
 
 
 const Layout = () => {
-    const [playerMoney, setPlayerMoney] = useState(30000);
+    const [playerMoney, setPlayerMoney] = useState(40000);
     const [playerName, setPlayerName] = useState("");
     const [rounds, setRounds] = useState(0);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [playerId, setPlayerId] = useState(null);
 
 
     return (
@@ -20,6 +21,7 @@ const Layout = () => {
                 <h1 className="navbar-brand"><Link to="/summaryTable">Summary Table</Link></h1>
                 <h1 className="navbar-brand"><Link to="/createUser">Create User</Link></h1>
                 <h1 className="navbar-brand"><Link to="/login">Login</Link></h1>
+                <h1 className="navbar-brand"><Link to="/damagePotential">Damage Potential</Link></h1>
 
             </nav>
 
@@ -38,7 +40,8 @@ const Layout = () => {
                                 playerName, setPlayerName,
                                 rounds, setRounds,
                                 username, setUsername,
-                                password, setPassword
+                                password, setPassword,
+                                playerId, setPlayerId
                             }}>
                             <Outlet/>
                         </PlayerContext.Provider>
