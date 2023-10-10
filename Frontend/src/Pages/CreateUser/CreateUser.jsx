@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import PlayerContext from "../../PlayerContext";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const CreateUser = () => {
@@ -40,55 +40,55 @@ const CreateUser = () => {
         }
     }
     return (
-    <div>
-        <h1 className="text">Create User</h1>
-        <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">Username</span>
-            <input
-                type="text"
-                className="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                onChange={(e) => setUsername(e.target.value)}/>
-        </div>
-        <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">Password</span>
-            <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                aria-label="Password"
-                aria-describedby="basic-addon2"
-                onChange={(e) => setPassword(e.target.value)}
-            />
-        </div>
-        <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">Repeat Password</span>
-            <input
-                type="password"
-                className="form-control"
-                placeholder="Repeat Password"
-                aria-label="Repeat Password"
-                aria-describedby="basic-addon2"
-                value={repeatPassword}
-                onChange={(e) => setRepeatPassword(e.target.value)}
-            />
-        </div>
         <div>
+            <h1 className="text">Create User</h1>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">Username</span>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                    onChange={(e) => setUsername(e.target.value)}/>
+            </div>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">Password</span>
+                <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Password"
+                    aria-label="Password"
+                    aria-describedby="basic-addon2"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">Repeat Password</span>
+                <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Repeat Password"
+                    aria-label="Repeat Password"
+                    aria-describedby="basic-addon2"
+                    value={repeatPassword}
+                    onChange={(e) => setRepeatPassword(e.target.value)}
+                />
+            </div>
+            <div>
 
 
-            <button type="button" className="btn btn-secondary" onClick={() => createUser()}>
-                Submit
-            </button>
-            {!isPasswordMatch &&
-                <div className="alert alert-danger" role="alert">
-                    Passwords do not Match!
-                </div>}
+                <button type="button" className="btn btn-secondary" onClick={() => createUser()}>
+                    Submit
+                </button>
+                {!isPasswordMatch &&
+                    <div className="alert alert-danger" role="alert">
+                        Passwords do not Match!
+                    </div>}
 
 
-        </div>
-    </div>)
+            </div>
+        </div>)
 }
 
 export default CreateUser;

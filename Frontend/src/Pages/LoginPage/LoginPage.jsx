@@ -1,28 +1,27 @@
-import { useContext } from "react";
+import {useContext} from "react";
 import PlayerContext from "../../PlayerContext";
-import { useState } from "react";
-import { Buffer } from 'buffer/';
-
+import {useState} from "react";
+import {Buffer} from 'buffer/';
 
 
 const LoginPage = () => {
     const {username, setUsername, password, setPassword} = useContext(PlayerContext);
     const initialMessage = 'Outcome will be displayed here...';
     const [message, setMessage] = useState(initialMessage);
-    
-    const handleLogin=() => {
+
+    const handleLogin = () => {
         const headers = new Headers();
         const auth = Buffer.from(
-              username + ":" +password  
+            username + ":" + password
         ).toString("base64");
-        headers.set("Authorization","Basic "+auth);
-        return fetch('http://localhost:8080/login', {method: "GET",headers:headers})
-        .then((response) => response.text())
-      .then(jwt => {
-      setMessage('JWT: '+jwt);
-      localStorage.setItem('jwt', jwt);
-    })
-    .catch((error) => console.log("ERROR: "+ error));
+        headers.set("Authorization", "Basic " + auth);
+        return fetch('http://localhost:8080/login', {method: "GET", headers: headers})
+            .then((response) => response.text())
+            .then(jwt => {
+                setMessage('JWT: ' + jwt);
+                localStorage.setItem('jwt', jwt);
+            })
+            .catch((error) => console.log("ERROR: " + error));
     }
 
 
@@ -44,7 +43,7 @@ const LoginPage = () => {
             </button>
 
             <div className="w-auto p-3">
-  <p className="text">{message}</p>
+                <p className="text">{message}</p>
             </div>
         </div>
     )

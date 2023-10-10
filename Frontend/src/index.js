@@ -11,7 +11,7 @@ import Game from "./Pages/Game/Game";
 import SummaryTable from "./Pages/SummaryTable/SummaryTable";
 import CreateUser from "./Pages/CreateUser/CreateUser";
 import LoginPage from './Pages/LoginPage/LoginPage';
-
+import DamagePotential from './Pages/DamagePotential/DamagePotential';
 
 const router = createBrowserRouter([
     {
@@ -35,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path:"/login",
                 element: <LoginPage/>
+            },
+            {
+                path:"/damagePotential",
+                element:<DamagePotential/>
             }
         ]
     }
